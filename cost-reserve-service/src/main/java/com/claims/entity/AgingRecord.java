@@ -1,0 +1,35 @@
+package com.claims.entity;
+
+import com.claims.enums.AgingBucket;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name = "aging_record", indexes = {
+    @Index(name = "idx_ar_claim_id",     columnList = "claim_id"),
+    @Index(name = "idx_ar_aging_bucket", columnList = "aging_bucket")
+})
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class AgingRecord {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "aging_id")
+    private Long agingId;
+
+    @Column(name = "claim_id", nullable = false)
+    private String claimId;
+
+    @Column(name = "aging_days", nullable = false)
+    private Integer agingDays;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "aging_bucket", nullable = false)
+    private AgingBucket agingBucket;
+}
