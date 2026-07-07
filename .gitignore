@@ -66,3 +66,8 @@ Thumbs.db
 .claude/
 route/PROMPT_SIMPLE.md
 new design/PROMPT_SIMPLE.md
+
+# Exclude non-README markdown files
+*.md
+!*README*.md
+!**/*README*.md
